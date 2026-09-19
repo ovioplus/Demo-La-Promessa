@@ -171,6 +171,14 @@ with the menu, hours and gallery seeded in `src/content`.
   the seal face delivered the monogram rotated a quarter turn. The face is now
   its own `circleGeometry`, which maps the unit square straight onto it.
 
+**Deployment.** Vercel project `la-promessa` under the `ovio-plus` team, beside
+`ovioplus-platform` and `website`, connected to this GitHub repo so pushes to
+`main` deploy. Live at **https://lapromessa.vercel.app**. Note the URL:
+`la-promessa.vercel.app` is already taken by someone outside this account, and
+Vercel's own generated name was `la-promessa-jade.vercel.app`, so the hyphen was
+dropped to get something presentable. The domain is bound to the project, so it
+follows future production deploys.
+
 **Still open:**
 
 - **Real content.** Everything in `src/content/restaurant.ts` is invented and
