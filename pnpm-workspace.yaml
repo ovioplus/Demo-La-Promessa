@@ -1,0 +1,6 @@
+# pnpm 11 keeps its settings here, not in package.json.
+# These three ship native binaries for Next's compiler and file watcher.
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  unrs-resolver: true
