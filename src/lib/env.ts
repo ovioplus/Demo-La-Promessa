@@ -33,4 +33,4 @@ export function readServerEnv(): { ok: true; env: ServerEnv } | { ok: false; err
   return { ok: true, env: parsed.data }
 }
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://la-promessa.vercel.app'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://lapromessa.vercel.app'
