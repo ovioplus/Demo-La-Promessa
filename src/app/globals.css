@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+
+/*
+ * La Promessa design system.
+ *
+ * Five colours and two typefaces, deliberately. The page carries almost no
+ * colour of its own so that the photography is the only colour on screen.
+ * Brass is a hairline and a label, never a fill: the moment it becomes a
+ * button background the whole thing looks cheap.
+ */
+@theme {
+  --color-gesso: #f1ece4;
+  --color-gesso-deep: #e7e0d5;
+  --color-inchiostro: #14110f;
+  --color-cenere: #6b635b;
+  --color-ottone: #a3814e;
+  --color-notte: #0c0a09;
+
+  --font-display: var(--font-bodoni), 'Didot', 'Bodoni MT', Georgia, serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  /* Expo-out. Everything on this site decelerates; nothing bounces. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --spacing-gutter: clamp(1.25rem, 5vw, 5.5rem);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-gesso);
+    color: var(--color-inchiostro);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-ottone);
+    color: var(--color-gesso);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-ottone);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /*
+   * Type scale. The gap between the top and the bottom of this scale is the
+   * point: display runs to ~176px while captions sit at 11px. That contrast is
+   * what reads as art-directed rather than templated.
+   */
+  .t-display-xl {
+    font-family: var(--font-display);
+    font-size: clamp(3.75rem, 13vw, 11rem);
+    line-height: 0.88;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+
+  .t-display-l {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+
+  .t-display-m {
+    font-family: var(--font-display);
+    font-size: clamp(1.875rem, 4vw, 3.125rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+
+  .t-display-s {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.875rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+
+  /* The home-page statement. One paragraph, one screen. */
+  .t-lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.7vw, 2.375rem);
+    line-height: 1.32;
+    letter-spacing: -0.012em;
+    font-weight: 400;
+  }
+
+  .t-body {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .t-caption {
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Structural furniture: the label that sits above a section, in brass. */
+  .t-label {
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--color-ottone);
+  }
+
+  .hairline {
+    border-color: color-mix(in srgb, var(--color-inchiostro) 14%, transparent);
+  }
+
+  .hairline-brass {
+    border-color: color-mix(in srgb, var(--color-ottone) 42%, transparent);
+  }
+
+  /* A text link that grows its own rule rather than pretending to be a button. */
+  .link-rule {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.35rem;
+  }
+
+  .link-rule::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform-origin: left;
+    transition: transform 0.7s var(--ease-settle);
+  }
+
+  .link-rule:hover::after {
+    transform: scaleX(0.35);
+  }
+}
+
+@layer utilities {
+  /*
+   * Motion vocabulary: exactly two moves, both slow.
+   *
+   * 1. Images wipe open from the bottom while the picture inside settles out of
+   *    a slight over-scale, like a camera coming to rest.
+   * 2. Display headings rise out of a mask.
+   *
+   * Body copy does not animate at all. Animating everything by the same fade
+   * and 12px nudge is the single clearest tell of a generated layout.
+   */
+  /*
+   * The clip lives on an inner element, never on the one the observer watches.
+   * `clip-path: inset(0 0 100%)` collapses the element's intersection rect to
+   * zero, so an element that hides itself this way reports as never visible and
+   * therefore never reveals. Keep the two responsibilities on separate nodes.
+   */
+  .reveal-clip {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.15s var(--ease-settle);
+  }
+
+  .reveal-clip > * {
+    transform: scale(1.08);
+    transition: transform 1.4s var(--ease-settle);
+  }
+
+  .is-revealed .reveal-clip {
+    clip-path: inset(0 0 0% 0);
+  }
+
+  .is-revealed .reveal-clip > * {
+    transform: scale(1);
+  }
+
+  .reveal-mask {
+    overflow: hidden;
+  }
+
+  .reveal-mask > * {
+    display: block;
+    transform: translateY(105%);
+    transition: transform 1s var(--ease-settle);
+  }
+
+  .is-revealed.reveal-mask > * {
+    transform: translateY(0);
+  }
+
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 1.1s var(--ease-settle);
+  }
+
+  .is-revealed.reveal-fade {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-clip,
+    .reveal-clip > *,
+    .reveal-mask > *,
+    .reveal-fade {
+      clip-path: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
+  }
+
+  .px-gutter {
+    padding-inline: var(--spacing-gutter);
+  }
+
+  .pl-gutter {
+    padding-inline-start: var(--spacing-gutter);
+  }
+
+  .pr-gutter {
+    padding-inline-end: var(--spacing-gutter);
+  }
+}
