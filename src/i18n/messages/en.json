@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "story": "Story",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "reservations": "Reservations",
+    "book": "Book a table",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "skip": "Skip to content"
+  },
+  "locale": {
+    "label": "Language",
+    "it": "IT",
+    "en": "EN",
+    "switchTo": "Switch to Italian"
+  },
+  "home": {
+    "heroEyebrow": "Florence · One Michelin star",
+    "heroScroll": "Continue",
+    "statementLabel": "The promise",
+    "dishesLabel": "From the kitchen",
+    "chefLabel": "Who cooks",
+    "chefCta": "Read the story",
+    "menuLabel": "The menu",
+    "menuIntro": "Three dishes we are not taking off at the moment. Everything else moves.",
+    "menuCta": "See the full menu",
+    "hoursLabel": "When",
+    "whereLabel": "Where",
+    "reserveTitle": "The table is waiting",
+    "reserveBody": "Twenty-two covers, two services, no telephone waiting list. Booking online takes under a minute.",
+    "reserveCta": "Book a table"
+  },
+  "menu": {
+    "title": "Menu",
+    "intro": "Written in the morning, after the market. What you read here is what there is tonight.",
+    "tastingLabel": "Tasting menus",
+    "carteLabel": "A la carte",
+    "courses": "{count} courses",
+    "pairing": "Wine pairing {price}",
+    "perPerson": "per person",
+    "wholeTable": "for the whole table",
+    "signature": "Signature",
+    "allergensLabel": "Allergens",
+    "allergensLegend": "Allergens declared under EU Regulation 1169/2011",
+    "notesLabel": "Notes",
+    "asideCaption": "Tonight's menu"
+  },
+  "allergens": {
+    "gluten": "Gluten",
+    "crustaceans": "Crustaceans",
+    "eggs": "Eggs",
+    "fish": "Fish",
+    "peanuts": "Peanuts",
+    "soy": "Soy",
+    "milk": "Milk",
+    "nuts": "Tree nuts",
+    "celery": "Celery",
+    "mustard": "Mustard",
+    "sesame": "Sesame",
+    "sulphites": "Sulphites",
+    "lupin": "Lupin",
+    "molluscs": "Molluscs"
+  },
+  "story": {
+    "title": "Story",
+    "eyebrow": "Who cooks",
+    "quoteLabel": "In two lines",
+    "kitchenLabel": "The kitchen",
+    "kitchenBody": "Twenty-two covers and seven people. No brigade, no theatrical hierarchy: whoever cleans the fish in the morning serves it at night.",
+    "starLabel": "Recognition",
+    "starBody": "One Michelin star since 2022."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "intro": "Service, the room, and whatever arrives in the morning."
+  },
+  "reservations": {
+    "title": "Reservations",
+    "eyebrow": "Before you book",
+    "intro": "The table is yours for the evening. We do not turn the same cover twice.",
+    "ctaLabel": "Book online",
+    "ctaNote": "This takes you to our booking page. Confirmation is immediate.",
+    "hoursTitle": "Hours",
+    "closedLabel": "Closed",
+    "closuresTitle": "Special closures",
+    "policyTitle": "How it works",
+    "policy": {
+      "release": "Bookings open on the first day of each month for the month after, at 10:00.",
+      "table": "Tasting menus are served for the whole table.",
+      "diet": "Allergies and intolerances: tell us when you book, not when you arrive. We can rewrite almost anything, given notice.",
+      "cancel": "Cancellation is free up to 48 hours before. After that we retain 50 € per person.",
+      "late": "We hold the table for twenty minutes. After that, please call."
+    },
+    "phoneLabel": "Or call us",
+    "phoneNote": "Tuesday to Saturday, 15:00 to 18:00."
+  },
+  "contact": {
+    "title": "Contact",
+    "eyebrow": "Write to us",
+    "intro": "For everything that is not a booking: private events, press, suppliers, curiosity.",
+    "addressLabel": "Address",
+    "hoursLabel": "Hours",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "mapLink": "Open in Google Maps",
+    "formTitle": "Send a message",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending",
+    "successTitle": "Received",
+    "successBody": "We reply within one working day.",
+    "errorTitle": "That did not send",
+    "errorBody": "Something went wrong. Try again, or write to us directly at {email}.",
+    "errors": {
+      "name": "Please enter a name.",
+      "email": "Please enter a valid email address.",
+      "subject": "Please enter a subject.",
+      "message": "The message needs at least ten characters.",
+      "rate": "You sent a message very recently. Please wait a few minutes."
+    },
+    "bookingNudge": "To reserve a table use the reservations page, it is faster."
+  },
+  "days": {
+    "0": "Sunday",
+    "1": "Monday",
+    "2": "Tuesday",
+    "3": "Wednesday",
+    "4": "Thursday",
+    "5": "Friday",
+    "6": "Saturday"
+  },
+  "footer": {
+    "navLabel": "Pages",
+    "contactLabel": "Contact",
+    "followLabel": "Follow",
+    "hoursLabel": "Hours",
+    "instagram": "Instagram",
+    "rights": "All rights reserved",
+    "credit": "A site by OvioPlus"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The link you followed no longer leads anywhere.",
+    "cta": "Back to the home page"
+  },
+  "meta": {
+    "home": {
+      "title": "La Promessa · Michelin-starred restaurant in Florence",
+      "description": "Contemporary Italian cooking in Florence. Twenty-two covers, one Michelin star, a menu that follows the market."
+    },
+    "menu": {
+      "title": "Menu",
+      "description": "The tasting menus and a la carte at La Promessa, with allergens declared."
+    },
+    "story": {
+      "title": "Story",
+      "description": "Matteo Ferrante and the kitchen at La Promessa: twenty-two covers, seven people, no theatrical hierarchy."
+    },
+    "gallery": {
+      "title": "Gallery",
+      "description": "Service, the room and the raw material at La Promessa."
+    },
+    "reservations": {
+      "title": "Reservations",
+      "description": "Hours, closures and booking conditions at La Promessa in Florence."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Address, hours and contact form for La Promessa in Florence."
+    }
+  }
+}

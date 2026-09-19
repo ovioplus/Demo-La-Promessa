@@ -1,0 +1,178 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "story": "La storia",
+    "gallery": "Galleria",
+    "contact": "Contatti",
+    "reservations": "Prenota",
+    "book": "Prenota un tavolo",
+    "openMenu": "Apri il menu di navigazione",
+    "closeMenu": "Chiudi il menu di navigazione",
+    "skip": "Vai al contenuto"
+  },
+  "locale": {
+    "label": "Lingua",
+    "it": "IT",
+    "en": "EN",
+    "switchTo": "Passa all'inglese"
+  },
+  "home": {
+    "heroEyebrow": "Firenze · Una stella Michelin",
+    "heroScroll": "Continua",
+    "statementLabel": "La promessa",
+    "dishesLabel": "Dalla cucina",
+    "chefLabel": "Chi cucina",
+    "chefCta": "Leggi la storia",
+    "menuLabel": "Il menu",
+    "menuIntro": "Tre piatti che al momento non togliamo. Il resto cambia.",
+    "menuCta": "Vedi il menu completo",
+    "hoursLabel": "Quando",
+    "whereLabel": "Dove",
+    "reserveTitle": "Il tavolo vi aspetta",
+    "reserveBody": "Ventidue coperti, due servizi, nessuna lista d'attesa telefonica. La prenotazione si chiude online in meno di un minuto.",
+    "reserveCta": "Prenota un tavolo"
+  },
+  "menu": {
+    "title": "Menu",
+    "intro": "Scritto la mattina, dopo il mercato. Quello che leggete qui è quello che c'è stasera.",
+    "tastingLabel": "Menu degustazione",
+    "carteLabel": "Alla carta",
+    "courses": "{count} portate",
+    "pairing": "Abbinamento vini {price}",
+    "perPerson": "a persona",
+    "wholeTable": "per l'intero tavolo",
+    "signature": "Signature",
+    "allergensLabel": "Allergeni",
+    "allergensLegend": "Allergeni indicati secondo il Reg. UE 1169/2011",
+    "notesLabel": "Note",
+    "asideCaption": "Il menu di questa sera"
+  },
+  "allergens": {
+    "gluten": "Glutine",
+    "crustaceans": "Crostacei",
+    "eggs": "Uova",
+    "fish": "Pesce",
+    "peanuts": "Arachidi",
+    "soy": "Soia",
+    "milk": "Latte",
+    "nuts": "Frutta a guscio",
+    "celery": "Sedano",
+    "mustard": "Senape",
+    "sesame": "Sesamo",
+    "sulphites": "Solfiti",
+    "lupin": "Lupini",
+    "molluscs": "Molluschi"
+  },
+  "story": {
+    "title": "La storia",
+    "eyebrow": "Chi cucina",
+    "quoteLabel": "In due righe",
+    "kitchenLabel": "La cucina",
+    "kitchenBody": "Ventidue coperti e sette persone. Nessuna brigata, nessuna gerarchia teatrale: chi pulisce il pesce la mattina lo serve la sera.",
+    "starLabel": "Riconoscimenti",
+    "starBody": "Una stella Michelin dal 2022."
+  },
+  "gallery": {
+    "title": "Galleria",
+    "intro": "Il servizio, la sala, quello che arriva la mattina."
+  },
+  "reservations": {
+    "title": "Prenota",
+    "eyebrow": "Prima di prenotare",
+    "intro": "Il tavolo è vostro per tutta la sera. Non facciamo due turni sullo stesso coperto.",
+    "ctaLabel": "Prenota online",
+    "ctaNote": "Vi porta alla nostra pagina di prenotazione. Conferma immediata.",
+    "hoursTitle": "Orari",
+    "closedLabel": "Chiuso",
+    "closuresTitle": "Chiusure straordinarie",
+    "policyTitle": "Come funziona",
+    "policy": {
+      "release": "Le prenotazioni aprono il primo giorno di ogni mese per il mese successivo, alle 10:00.",
+      "table": "I menu degustazione sono serviti per l'intero tavolo.",
+      "diet": "Allergie e intolleranze: segnalatele in fase di prenotazione, non all'arrivo. Riscriviamo quasi tutto, se lo sappiamo per tempo.",
+      "cancel": "La cancellazione è gratuita fino a 48 ore prima. Oltre quel termine tratteniamo 50 € a persona.",
+      "late": "Teniamo il tavolo per venti minuti. Dopo, chiamateci."
+    },
+    "phoneLabel": "Oppure telefonate",
+    "phoneNote": "Dal martedì al sabato, dalle 15:00 alle 18:00."
+  },
+  "contact": {
+    "title": "Contatti",
+    "eyebrow": "Scriveteci",
+    "intro": "Per tutto quello che non passa da una prenotazione: eventi privati, stampa, fornitori, curiosità.",
+    "addressLabel": "Indirizzo",
+    "hoursLabel": "Orari",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefono",
+    "mapLink": "Apri in Google Maps",
+    "formTitle": "Scrivete",
+    "name": "Nome",
+    "email": "Email",
+    "subject": "Oggetto",
+    "message": "Messaggio",
+    "send": "Invia",
+    "sending": "Invio in corso",
+    "successTitle": "Ricevuto",
+    "successBody": "Rispondiamo entro un giorno lavorativo.",
+    "errorTitle": "Non è partita",
+    "errorBody": "Qualcosa è andato storto. Riprovate, oppure scriveteci direttamente a {email}.",
+    "errors": {
+      "name": "Inserite un nome.",
+      "email": "Inserite un indirizzo email valido.",
+      "subject": "Inserite un oggetto.",
+      "message": "Il messaggio deve contenere almeno dieci caratteri.",
+      "rate": "Avete già inviato un messaggio da poco. Attendete qualche minuto."
+    },
+    "bookingNudge": "Per prenotare un tavolo usate la pagina prenotazioni: è più veloce."
+  },
+  "days": {
+    "0": "Domenica",
+    "1": "Lunedì",
+    "2": "Martedì",
+    "3": "Mercoledì",
+    "4": "Giovedì",
+    "5": "Venerdì",
+    "6": "Sabato"
+  },
+  "footer": {
+    "navLabel": "Pagine",
+    "contactLabel": "Contatti",
+    "followLabel": "Seguiteci",
+    "hoursLabel": "Orari",
+    "instagram": "Instagram",
+    "rights": "Tutti i diritti riservati",
+    "credit": "Sito di OvioPlus"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "body": "Il collegamento che avete seguito non porta più da nessuna parte.",
+    "cta": "Torna alla home"
+  },
+  "meta": {
+    "home": {
+      "title": "La Promessa · Ristorante stellato a Firenze",
+      "description": "Cucina italiana contemporanea a Firenze. Ventidue coperti, una stella Michelin, un menu che cambia con il mercato."
+    },
+    "menu": {
+      "title": "Menu",
+      "description": "I menu degustazione e la carta de La Promessa, con l'indicazione degli allergeni."
+    },
+    "story": {
+      "title": "La storia",
+      "description": "Matteo Ferrante e la cucina de La Promessa: ventidue coperti, sette persone, nessuna gerarchia teatrale."
+    },
+    "gallery": {
+      "title": "Galleria",
+      "description": "Il servizio, la sala e la materia prima de La Promessa."
+    },
+    "reservations": {
+      "title": "Prenota",
+      "description": "Orari, chiusure e condizioni di prenotazione de La Promessa a Firenze."
+    },
+    "contact": {
+      "title": "Contatti",
+      "description": "Indirizzo, orari e modulo di contatto de La Promessa a Firenze."
+    }
+  }
+}
