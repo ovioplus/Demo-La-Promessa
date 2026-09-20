@@ -188,38 +188,43 @@ site serves the seed content and the dashboard reports itself unconfigured.
 
 <!-- Newest entry first. One entry per session that changed non-trivial state or made a decision worth remembering. Keep entries short: a few lines, not a restatement of every commit. -->
 
-### 2026-09-20 (evening), mail works, but only to one address
+### 2026-09-20 (evening), mail: the domain was right, the TLD was not
 
-`RESEND_API_KEY` added. Both mail paths now verified against production: the
-contact form returns 200 and a verification token lands in the database when the
-sign-in form is submitted. The pipeline is correct end to end.
+`RESEND_API_KEY` added and both mail paths verified against production. The
+contact form returns 200 and a sign-in link reaches an address that is **not**
+the Resend account's own, which is the test that proves real domain
+verification rather than Resend's test-mode allowance.
 
-**The Resend account has no verified domain**, which is the real finding and is
-not what phase 1 assumed. Two errors, in order:
+**The cause of the 403s was mine, and it is worth stating plainly so nobody
+repeats it: OvioPlus serves the web from `.ai` and sends mail from `.com`.**
+Phase 1 assumed one domain for both and hardcoded `no-reply@ovioplus.ai`
+everywhere, which fails with `403 The ovioplus.ai domain is not verified`.
+`ovioplus.com` was verified in Resend the whole time.
 
-1. `403 The ovioplus.ai domain is not verified` when sending from
-   `no-reply@ovioplus.ai`.
-2. Falling back to Resend's shared `onboarding@resend.dev` sender:
-   `403 You can only send testing emails to your own email address
-   (ayoub.balti@ovioplus.com)`.
+The diagnosis took a detour worth remembering. Falling back to Resend's shared
+`onboarding@resend.dev` sender produced a different 403, `You can only send
+testing emails to your own email address`, which looks like "no domain is
+verified anywhere" but is just the shared sender's own restriction. It says
+nothing about the account's domains. Test with a real sender and a recipient
+that is not the account holder, or the result means nothing.
 
-So the account is registered to `ayoub.balti@ovioplus.com` and has nothing
-verified. **Worth checking whether this is the same Resend account
-ovioplus-platform uses**: that repo defaults `RESEND_FROM` to
-`reservations@ovioplus.ai`, and if it is the same account then its reservation
-emails are failing the same way and nobody has noticed.
+Corrected in `src/lib/env.ts`, `src/auth/index.ts`, the contact route comment
+and `.env.example`. **`src/lib/booking.ts` and the footer credit link stay
+`.ai`**: those are web addresses and they are right. Do not align them.
 
-Current production state, deliberately, to make the demo work at all:
+Production now:
 
-- `CONTACT_FROM_EMAIL` = `La Promessa <onboarding@resend.dev>`
+- `CONTACT_FROM_EMAIL` = `La Promessa <no-reply@ovioplus.com>`
 - `CONTACT_TO_EMAIL` = `ayoub.balti@ovioplus.com`
 - `OWNER_EMAILS` = `ayoub.balti@ovioplus.com,ayoub.balti@pixartprinting.com`
 
-**This is a holding position, not the answer.** Mail can only reach that one
-address, and a Michelin client should not receive anything from
-`onboarding@resend.dev`. Verify a domain at resend.com/domains, then set
-`CONTACT_FROM_EMAIL` back to an address on it. No code changes: the sender was
-built as a single environment variable for exactly this.
+`ovioplus-platform` sets `RESEND_FROM` explicitly in its own Vercel production
+env, so it is not relying on its `reservations@ovioplus.ai` default and is
+presumably fine. Not verified directly, the value is hidden.
+
+**Still open:** `CONTACT_TO_EMAIL` should become the restaurant's real address
+at handover, and `CONTACT_FROM_EMAIL` should move to lapromessa.it once the
+client buys and verifies it. One variable each.
 
 ### 2026-09-20 (later still), Neon connected, and a sender-address trap
 
