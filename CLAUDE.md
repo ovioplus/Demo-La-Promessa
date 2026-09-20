@@ -91,7 +91,7 @@ Auth is resource-based rather than middleware-based, the same convention as
 ovioplus-platform, which also means next-intl's middleware stays the only
 middleware and there are no two to compose.
 
-### 4. Photography is one file
+### 4. Photography is one file, and it is imported, not pathed
 
 `src/content/images.ts` is the only place a file path appears. Everything in
 `/public/images` is a placeholder under the Unsplash License, chosen to hold one
@@ -99,9 +99,28 @@ register: dark, warm, single light source, no cold blues. **The alt text
 describes the placeholder, not the real dish, so it has to be rewritten when the
 real photographs arrive.**
 
+The photographs are **statically imported** rather than referenced by path
+string. That is what lets Next generate the blurred placeholder and the
+intrinsic dimensions at build time. Swapping is unchanged: drop a file in under
+the same name and the import picks it up.
+
+Two consequences worth knowing:
+
+- A static import's real URL is `/_next/static/media/<name>.<hash>.jpg`, and the
+  hash changes whenever the file does. Anything that needs those URLs must read
+  them from the rendered markup, not build them from the filenames. See
+  `scripts/warm-images.mjs`, which got this wrong once.
+- `placeholder="blur"` only works for a static import. Passing it with a plain
+  path and no explicit `blurDataURL` throws at render, so `ImageFrame` and
+  `PageHeader` set it conditionally.
+
 After swapping any file in `/public/images`, delete `.next/cache/images`. Next
 keys its optimizer cache on the source path, so a new file at an old path serves
 the old bytes and you will chase a ghost for ten minutes.
+
+**Before any client viewing, run `pnpm warm:images`.** Next optimises on first
+request, so without it the first person to open the site waits roughly a second
+per photograph while the optimiser works. That person should not be the client.
 
 ## Conventions
 
@@ -162,6 +181,32 @@ site serves the seed content and the dashboard reports itself unconfigured.
 ## Session Log
 
 <!-- Newest entry first. One entry per session that changed non-trivial state or made a decision worth remembering. Keep entries short: a few lines, not a restatement of every commit. -->
+
+### 2026-09-20 (later), photographs felt slow
+
+Reported as "images seem to lag". Measured rather than guessed: transfer was
+never the problem (the hero is 81kB optimised, 0.33s warm). Three things were
+stacking up instead.
+
+1. **No placeholder.** Every photograph was a plain path string, so there was no
+   `blurDataURL` and an image that had not arrived was an empty rectangle.
+   Switched `src/content/images.ts` to static imports and turned on
+   `placeholder="blur"` everywhere. Verified: nine inline base64 placeholders in
+   the built gallery HTML.
+2. **The reveal fired late.** The observer's `rootMargin` was
+   `0px 0px -12% 0px`, which deliberately held the animation back until the
+   element was well inside the viewport. Now `0px 0px 10% 0px`, so the wipe is
+   already opening by the time you look at it.
+3. **The wipe was long.** 1.15s clip and 1.4s inner scale, now 0.9s and 1.1s.
+   Still unhurried, no longer slow. The mask and fade timings were left alone.
+
+Also added `pnpm warm:images`, because Next optimises on first request and the
+client should not be the one paying for it. **The first version of that script
+was wrong** and is worth remembering: it built URLs from the filenames in
+`public/images`, but static imports serve from
+`/_next/static/media/<name>.<hash>.jpg`, so it warmed 66 URLs the site never
+requests. It now scrapes the real URLs out of the rendered pages: 98 variants,
+all twelve routes.
 
 ### 2026-09-20, phase 2: the dashboard
 
