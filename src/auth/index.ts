@@ -26,7 +26,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     Resend({
       apiKey: process.env.RESEND_API_KEY,
-      from: process.env.CONTACT_FROM_EMAIL ?? 'La Promessa <no-reply@ovioplus.ai>',
+      // ovioplus.com, not .ai: see the note in src/lib/env.ts.
+      from: process.env.CONTACT_FROM_EMAIL ?? 'La Promessa <no-reply@ovioplus.com>',
       name: 'Email',
     }),
   ],

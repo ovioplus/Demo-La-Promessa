@@ -170,9 +170,15 @@ See `.env.example`. Nothing is required to build: with no environment at all the
 site serves the seed content and the dashboard reports itself unconfigured.
 
 - `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL`: the contact form
-  and the dashboard's sign-in links. `CONTACT_FROM_EMAIL` is an ovioplus.ai
-  address because lapromessa.it is not verified in Resend yet; the visitor goes
-  in reply-to. One variable to change once the domain is verified.
+  and the dashboard's sign-in links. `CONTACT_FROM_EMAIL` is an
+  **ovioplus.com** address, because lapromessa.it is not verified in Resend yet;
+  the visitor goes in reply-to. One variable to change once it is.
+
+  **Mail is .com, the web is .ai.** OvioPlus serves ovioplus.ai and
+  app.ovioplus.ai, but the only domain verified in Resend is `ovioplus.com`.
+  Sending from `.ai` fails with a 403. The booking URL in `src/lib/booking.ts`
+  and the footer credit link are web addresses and correctly stay `.ai`; do not
+  align them.
 - `DATABASE_URL` (pooled) and `DIRECT_URL` (un-pooled, migrations only): Neon.
 - `AUTH_SECRET`: `openssl rand -base64 32`.
 - `OWNER_EMAILS`: comma separated allowlist for the dashboard. Empty means

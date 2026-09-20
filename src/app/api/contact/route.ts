@@ -69,8 +69,9 @@ export async function POST(request: Request) {
 
   const { error } = await resend.emails.send({
     /**
-     * Sent from an ovioplus.ai address because the restaurant's own domain is
-     * not verified in Resend yet. The visitor goes in replyTo, so hitting
+     * Sent from an ovioplus.com address because the restaurant's own domain is
+     * not verified in Resend yet. Note .com: OvioPlus serves the web from .ai
+     * but sends mail from .com, which is the verified domain. The visitor goes in replyTo, so hitting
      * reply in the inbox still reaches the right person. Once lapromessa.it is
      * verified, change CONTACT_FROM_EMAIL and nothing else.
      */

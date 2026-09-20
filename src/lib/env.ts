@@ -30,11 +30,20 @@ const address = (label: string) =>
 const serverSchema = z.object({
   RESEND_API_KEY: z.string().min(1, 'RESEND_API_KEY is not set'),
   /**
-   * The verified sender. The client's own domain is not verified yet, so this
-   * is an ovioplus.ai address for now and the visitor's address goes in
-   * reply-to. Swap this one variable once lapromessa.it is verified in Resend.
+   * The verified sender.
+   *
+   * **ovioplus.com, not ovioplus.ai.** OvioPlus serves the web from `.ai`
+   * (ovioplus.ai, app.ovioplus.ai) but sends mail from `.com`, and only
+   * `ovioplus.com` is a verified domain in Resend. Sending from `.ai` fails
+   * with `403 The ovioplus.ai domain is not verified`. Do not "correct" this to
+   * match the booking URL in src/lib/booking.ts, which is a web address and is
+   * right as it is.
+   *
+   * The restaurant's own domain is not verified yet, so mail goes out from
+   * OvioPlus and the visitor's address goes in reply-to. Swap this one variable
+   * once lapromessa.it is verified in Resend.
    */
-  CONTACT_FROM_EMAIL: address('CONTACT_FROM_EMAIL').default('La Promessa <no-reply@ovioplus.ai>'),
+  CONTACT_FROM_EMAIL: address('CONTACT_FROM_EMAIL').default('La Promessa <no-reply@ovioplus.com>'),
   /** Where the restaurant actually reads its mail. */
   CONTACT_TO_EMAIL: address('CONTACT_TO_EMAIL'),
 })
