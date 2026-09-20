@@ -267,9 +267,11 @@ sign-in with no cookie, with a forged cookie, and 200 with a real session.
 
 **Still open:**
 
-- **Resend is still not wired to a live key.** This now blocks the dashboard as
-  well as the contact form: with no `RESEND_API_KEY` no sign-in link can be
-  sent. Local testing used a session row inserted by hand.
+- **Resend is still not wired to a live key.** This blocks the dashboard as well
+  as the contact form: with no `RESEND_API_KEY` no sign-in link can be sent, so
+  nobody can actually log in to production yet. Local testing used a session row
+  inserted by hand. This is the last thing standing between the client and a
+  working demo.
 - **Adding a second dashboard user needs Vercel access**, because the allowlist
   is an env var. Fine for one restaurant, worth revisiting if this template is
   sold to owners who want to delegate.
@@ -340,6 +342,19 @@ with the menu, hours and gallery seeded in `src/content`.
 - **A cylinder cap's UVs are laid out in its local XZ plane.** Using the cap as
   the seal face delivered the monogram rotated a quarter turn. The face is now
   its own `circleGeometry`, which maps the unit square straight onto it.
+
+**Database.** Neon project **`la-promessa`** (`muddy-cell-76186430`),
+aws-eu-central-1, Postgres 18, in the `ovioplus` Neon org
+(`org-twilight-frost-09251036`) but a completely separate project from
+`ovioplus` (`late-lake-47546531`). Database name is Neon's default `neondb`;
+the project name is what disambiguates it. `DATABASE_URL` is the `-pooler`
+endpoint, `DIRECT_URL` the un-pooled one, both set in Vercel production only.
+Migrated and seeded on 2026-09-20: 4 sections, 12 dishes, 3 tasting menus,
+3 notes, 7 service rows, 2 closures.
+
+Local development points at a Docker container instead, deliberately: keeping
+`DIRECT_URL` in `.env.local` aimed at Neon would put `pnpm db:seed --force` one
+typo away from wiping the client's content.
 
 **Deployment.** Vercel project `la-promessa` under the `ovio-plus` team, beside
 `ovioplus-platform` and `website`, connected to this GitHub repo so pushes to
