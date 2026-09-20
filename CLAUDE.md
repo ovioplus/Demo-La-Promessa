@@ -182,6 +182,39 @@ site serves the seed content and the dashboard reports itself unconfigured.
 
 <!-- Newest entry first. One entry per session that changed non-trivial state or made a decision worth remembering. Keep entries short: a few lines, not a restatement of every commit. -->
 
+### 2026-09-20 (evening), mail works, but only to one address
+
+`RESEND_API_KEY` added. Both mail paths now verified against production: the
+contact form returns 200 and a verification token lands in the database when the
+sign-in form is submitted. The pipeline is correct end to end.
+
+**The Resend account has no verified domain**, which is the real finding and is
+not what phase 1 assumed. Two errors, in order:
+
+1. `403 The ovioplus.ai domain is not verified` when sending from
+   `no-reply@ovioplus.ai`.
+2. Falling back to Resend's shared `onboarding@resend.dev` sender:
+   `403 You can only send testing emails to your own email address
+   (ayoub.balti@ovioplus.com)`.
+
+So the account is registered to `ayoub.balti@ovioplus.com` and has nothing
+verified. **Worth checking whether this is the same Resend account
+ovioplus-platform uses**: that repo defaults `RESEND_FROM` to
+`reservations@ovioplus.ai`, and if it is the same account then its reservation
+emails are failing the same way and nobody has noticed.
+
+Current production state, deliberately, to make the demo work at all:
+
+- `CONTACT_FROM_EMAIL` = `La Promessa <onboarding@resend.dev>`
+- `CONTACT_TO_EMAIL` = `ayoub.balti@ovioplus.com`
+- `OWNER_EMAILS` = `ayoub.balti@ovioplus.com,ayoub.balti@pixartprinting.com`
+
+**This is a holding position, not the answer.** Mail can only reach that one
+address, and a Michelin client should not receive anything from
+`onboarding@resend.dev`. Verify a domain at resend.com/domains, then set
+`CONTACT_FROM_EMAIL` back to an address on it. No code changes: the sender was
+built as a single environment variable for exactly this.
+
 ### 2026-09-20 (later still), Neon connected, and a sender-address trap
 
 Neon project created and wired (details above), migrated and seeded. Production
