@@ -182,6 +182,28 @@ site serves the seed content and the dashboard reports itself unconfigured.
 
 <!-- Newest entry first. One entry per session that changed non-trivial state or made a decision worth remembering. Keep entries short: a few lines, not a restatement of every commit. -->
 
+### 2026-09-20 (later still), Neon connected, and a sender-address trap
+
+Neon project created and wired (details above), migrated and seeded. Production
+now reads the menu and the hours from Postgres.
+
+While setting the Resend variables, found a bug I had written in phase 1:
+`CONTACT_FROM_EMAIL` was validated with `z.string().email()`, which **rejects**
+`La Promessa <no-reply@ovioplus.ai>`. That is the form Resend wants and the form
+`.env.example` tells you to use. It went unnoticed because zod does not validate
+`.default()` values, so the fallback worked and the failure only appeared the
+moment somebody set the variable explicitly, which the deploy instructions say
+to do. Both contact addresses now accept a bare address or `Name <address>`.
+Six cases covered by hand, including the two rejections.
+
+Also set `CONTACT_TO_EMAIL` in Vercel, which had never been set at all and is
+required with no default: even with a working Resend key the contact form would
+have returned 500.
+
+**Still open:** `RESEND_API_KEY` is now genuinely the only missing variable.
+`CONTACT_TO_EMAIL` currently points at the owner's own address so the demo
+delivers somewhere real; it should become the restaurant's address at handover.
+
 ### 2026-09-20 (later), photographs felt slow
 
 Reported as "images seem to lag". Measured rather than guessed: transfer was
