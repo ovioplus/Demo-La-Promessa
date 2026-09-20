@@ -3,9 +3,6 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Bodoni_Moda, Instrument_Sans } from 'next/font/google'
 import { notFound } from 'next/navigation'
-import { SiteFooter } from '@/components/site-footer'
-import { SiteHeader } from '@/components/site-header'
-import { getHours, getRestaurant } from '@/content'
 import { routing, type Locale } from '@/i18n/routing'
 import { SITE_URL } from '@/lib/env'
 import '../globals.css'
@@ -76,16 +73,10 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale)
 
-  const [restaurant, hours] = await Promise.all([getRestaurant(), getHours()])
-
   return (
     <html lang={locale} className={`${bodoni.variable} ${instrument.variable}`}>
       <body>
-        <NextIntlClientProvider>
-          <SiteHeader />
-          <main id="main">{children}</main>
-          <SiteFooter restaurant={restaurant} hours={hours} />
-        </NextIntlClientProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   )

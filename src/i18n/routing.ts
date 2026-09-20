@@ -32,6 +32,16 @@ export const routing = defineRouting({
     '/gallery': { it: '/galleria', en: '/gallery' },
     '/reservations': { it: '/prenota', en: '/reservations' },
     '/contact': { it: '/contatti', en: '/contact' },
+
+    /**
+     * The dashboard keeps one slug in both languages. Its chrome is
+     * translated, but an admin URL that changes shape per locale is a support
+     * problem, not a feature: the owner bookmarks one address.
+     */
+    '/dashboard': '/dashboard',
+    '/dashboard/menu': '/dashboard/menu',
+    '/dashboard/hours': '/dashboard/hours',
+    '/dashboard/sign-in': '/dashboard/sign-in',
   },
 })
 
