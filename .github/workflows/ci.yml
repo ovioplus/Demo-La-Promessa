@@ -22,6 +22,16 @@ jobs:
       # contact route and these keep the shape honest if that ever changes.
       CONTACT_TO_EMAIL: ci@example.com
       NEXT_PUBLIC_SITE_URL: https://ci.example.com
+      # Auth.js refuses to initialise without one. Nothing signs in during a build.
+      AUTH_SECRET: ci-build-only-not-a-real-secret
+      #
+      # DATABASE_URL is deliberately NOT set here.
+      #
+      # With no database the content accessors fall back to the committed seed
+      # files (see src/content/index.ts), so CI prerenders the whole public site
+      # from the repo and never needs a Postgres. If you ever add a build step
+      # that must talk to the database, point this at a Neon branch rather than
+      # production.
 
     steps:
       - uses: actions/checkout@v4
