@@ -15,6 +15,8 @@
   --color-cenere: #6b635b;
   --color-ottone: #a3814e;
   --color-notte: #0c0a09;
+  /* Dashboard only: the ground for input fields and cards, a shade above paper. */
+  --color-carta: #fbf9f5;
 
   --font-display: var(--font-bodoni), 'Didot', 'Bodoni MT', Georgia, serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
@@ -231,6 +233,26 @@
       opacity: 1 !important;
       transition: none !important;
     }
+  }
+
+  /* Dashboard field. Bordered rather than ruled: an editor wants edges. */
+  .field-input {
+    width: 100%;
+    background-color: var(--color-carta);
+    border: 1px solid color-mix(in srgb, var(--color-inchiostro) 14%, transparent);
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    transition: border-color 0.2s var(--ease-settle);
+  }
+
+  .field-input:focus {
+    outline: none;
+    border-color: var(--color-ottone);
+  }
+
+  .field-input::placeholder {
+    color: color-mix(in srgb, var(--color-cenere) 55%, transparent);
   }
 
   .px-gutter {
