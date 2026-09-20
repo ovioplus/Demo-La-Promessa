@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import { Reveal } from './reveal'
 import { cn } from '@/lib/cn'
 
@@ -20,7 +20,7 @@ export function PageHeader({
   eyebrow?: string
   title: string
   intro?: string
-  image?: string
+  image?: StaticImageData | string
   imageAlt?: string
   className?: string
 }) {
@@ -34,6 +34,7 @@ export function PageHeader({
             fill
             priority
             sizes="100vw"
+            placeholder={typeof image === 'string' ? undefined : 'blur'}
             className="object-cover opacity-45"
           />
           <div

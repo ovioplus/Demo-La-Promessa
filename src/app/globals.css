@@ -184,12 +184,12 @@
    */
   .reveal-clip {
     clip-path: inset(0 0 100% 0);
-    transition: clip-path 1.15s var(--ease-settle);
+    transition: clip-path 0.9s var(--ease-settle);
   }
 
   .reveal-clip > * {
-    transform: scale(1.08);
-    transition: transform 1.4s var(--ease-settle);
+    transform: scale(1.06);
+    transition: transform 1.1s var(--ease-settle);
   }
 
   .is-revealed .reveal-clip {

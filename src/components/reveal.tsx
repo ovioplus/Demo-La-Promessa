@@ -55,7 +55,14 @@ export function Reveal({ as = 'div', variant = 'fade', delay = 0, className, chi
           }
         }
       },
-      { rootMargin: '0px 0px -12% 0px', threshold: 0.01 },
+      /**
+       * A small positive bottom margin, so the reveal starts just before the
+       * element scrolls into view and is already opening by the time you look
+       * at it. This used to be -12%, which held the animation back until the
+       * element was well inside the viewport and made every photograph feel
+       * like it was arriving late.
+       */
+      { rootMargin: '0px 0px 10% 0px', threshold: 0.01 },
     )
 
     observer.observe(node)

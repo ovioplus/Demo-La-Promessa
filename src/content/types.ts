@@ -1,3 +1,4 @@
+import type { StaticImageData } from 'next/image'
 import type { Locale } from '@/i18n/routing'
 
 /** A string that exists in every supported locale. */
@@ -95,7 +96,11 @@ export type Hours = {
 
 export type GalleryImage = {
   id: string
-  src: string
+  /**
+   * A static import, so Next can generate the blur placeholder and the
+   * intrinsic size. `string` stays allowed for a future remote source.
+   */
+  src: StaticImageData | string
   alt: Localized
   caption?: Localized
   /** Drives the masonry rhythm: portrait images get more vertical room. */

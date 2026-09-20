@@ -1,9 +1,9 @@
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import { Reveal } from './reveal'
 import { cn } from '@/lib/cn'
 
 type ImageFrameProps = {
-  src: string
+  src: StaticImageData | string
   alt: string
   /** Tailwind aspect ratio class, e.g. 'aspect-[3/4]'. */
   ratio?: string
@@ -29,11 +29,24 @@ export function ImageFrame({
   caption,
   delay,
 }: ImageFrameProps) {
+  // A blur placeholder only exists for a static import. A plain path would
+  // need an explicit blurDataURL, and passing placeholder="blur" without one
+  // throws at render.
+  const placeholder = typeof src === 'string' ? undefined : ('blur' as const)
+
   return (
     <figure className={cn('group', className)}>
       <Reveal variant="none" delay={delay} className={cn('bg-gesso-deep relative overflow-hidden', ratio)}>
         <div className="reveal-clip absolute inset-0">
-          <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes={sizes}
+            priority={priority}
+            placeholder={placeholder}
+            className="object-cover"
+          />
         </div>
       </Reveal>
       {caption ? (

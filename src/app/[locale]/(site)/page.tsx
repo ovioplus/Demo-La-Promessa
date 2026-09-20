@@ -33,7 +33,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
       {/* never contend for the same optical centre.                         */}
       {/* ---------------------------------------------------------------- */}
       <section className="bg-notte text-gesso relative isolate flex min-h-svh flex-col justify-end overflow-hidden">
-        <Image src={images.hero} alt="" fill priority sizes="100vw" className="object-cover opacity-40" />
+        <Image
+          src={images.hero}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          placeholder="blur"
+          className="object-cover opacity-40"
+        />
         <div
           aria-hidden
           className="from-notte/85 via-notte/40 to-notte/95 absolute inset-0 bg-gradient-to-br"
@@ -118,6 +126,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                 alt={restaurant.chef.name}
                 fill
                 sizes="(max-width: 768px) 100vw, 42vw"
+                placeholder="blur"
                 className="object-cover"
               />
             </div>
@@ -218,7 +227,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
       {/* The close. The only real button on the page.                       */}
       {/* ---------------------------------------------------------------- */}
       <section className="bg-notte text-gesso relative isolate overflow-hidden">
-        <Image src={images.reservations} alt="" fill sizes="100vw" className="object-cover opacity-25" />
+        <Image
+          src={images.reservations}
+          alt=""
+          fill
+          sizes="100vw"
+          placeholder="blur"
+          className="object-cover opacity-25"
+        />
         <div aria-hidden className="from-notte via-notte/70 to-notte/85 absolute inset-0 bg-gradient-to-t" />
 
         <div className="px-gutter relative grid grid-cols-12 py-36 md:py-52">
